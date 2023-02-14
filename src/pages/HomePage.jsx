@@ -6,7 +6,7 @@ import { allProjects } from "../data";
 
 function HomePage() {
     return (
-        <div>
+        <div id="project-list">
             {allProjects.map((project, key) => {
                 return <ProjectCard key={key} projectData={project} />;
             })}
