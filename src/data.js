@@ -7,7 +7,9 @@ export const allProjects = [
         image: "https://via.placeholder.com/300.jpg",
         is_open: false,
         date_created: "2020-03-20T14:22:23.382748Z",
+        total: 500,
         owner: 1,
+
     },
     {
         id: 2,

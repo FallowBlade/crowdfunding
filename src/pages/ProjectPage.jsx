@@ -26,7 +26,7 @@ function ProjectPage() {
             <ul>
                 {project.pledges.map((pledgeData, key) => {
                     return (
-                        <li>
+                        <li key={key}>
                             {pledgeData.amount} from {pledgeData.supporter}
                         </li>
                     );
