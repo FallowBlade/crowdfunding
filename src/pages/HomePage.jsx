@@ -11,22 +11,27 @@ import ProjectCard from "../components/ProjectCard/ProjectCard";
 
 function HomePage() {
     const [projectList, setProjectList] = useState([]);
-
+    console.log(projectList)
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}projects`)
             .then((results) => {
                 return results.json();
             })
             .then((data) => {
-                setProjectList(data);
+                setProjectList(data.results);
             });
     }, []);
 
     return (
-        <div id="project-list">
-            {projectList.map((project, key) => {
-                return <ProjectCard key={key} project={project} />;
-            })}
+        <div>
+            <h1>Rejuvinature</h1>
+            <p>Reinvigerate your neighbourhood!</p>
+
+            <div id="project-list">
+                {projectList.map((project, key) => {
+                    return <ProjectCard key={key} project={project} />;
+                })}
+            </div>
         </div>
     );
 }
