@@ -3,6 +3,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 // Pages
 import HomePage from "./pages/HomePage";
 import ProjectPage from "./pages/ProjectPage";
+import LoginPage from "./pages/LoginPage";
 
 // CSS
 import "./App.css";
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/project/:id", element: <ProjectPage /> },
+      { path: "/login", element: <LoginPage /> },
 
     ],
   },
