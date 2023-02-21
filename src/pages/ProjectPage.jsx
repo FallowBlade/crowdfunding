@@ -25,7 +25,7 @@ function ProjectPage() {
             <h3>Created at: {project.date_created}</h3>
             <h3>{`Status: ${project.is_open}`}</h3>
             <img src={project.image} />
-            <h3>Our Amazing Pledges:</h3>
+            <h3>Our Amazing Pledgers:</h3>
 
             <ul>
                 {project.pledges.map((pledgeData, key) => {
