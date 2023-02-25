@@ -1,7 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 function LoginForm() {
+
+    const authToken = window.localStorage.getItem("token")
+    const [loggedIn] = useOutletContext();
+
+    const [, setLoggedIn] = useOutletContext();
     // State
     const [credentials, setCredentials] = useState({
         username: "",
@@ -12,7 +17,6 @@ function LoginForm() {
     const navigate = useNavigate();
 
     // Actions
-
     const handleChange = (event) => {
         const { id, value } = event.target;
 
@@ -20,23 +24,9 @@ function LoginForm() {
             ...prevCredentials,
             [id]: value,
         }));
-    };
+    }
 
     // above we are overiding what was in the previous credentials, and setting the new credentials.
-
-    // Create the submit for login page.
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        if (credentials.username && credentials.password) {
-            const { token } = await postData();
-            window.localStorage.setItem("token", token);
-            navigate("/");
-            // "token" is the key, value is token
-        }
-
-    };
-
 
     // PostData
     const postData = async () => {
@@ -53,6 +43,22 @@ function LoginForm() {
         return response.json();
     };
 
+
+    // Create the submit for login page.
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        if (credentials.username && credentials.password) {
+            const { token } = await postData();
+            if (token != undefined) {
+                window.localStorage.setItem("token", token);
+                setLoggedIn(true);
+                navigate("/");
+            } else {
+                setLoggedIn(false);
+            }
+        }
+    };
 
     return (
         <form onSubmit={handleSubmit}>

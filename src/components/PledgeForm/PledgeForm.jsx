@@ -1,85 +1,106 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import dateFormat from 'dateformat';
+import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 function PledgeForm() {
-    // State
-    const [credentials, setCredentials] = useState({
-        username: "",
-        password: "",
+    const [pledges, setPledges] = useState({
+        // from JSON Raw Body in Deployed (default values)
+        // this is what you return at the bottom - your list might look different to mine. If so, don't worry!
+        "amount": null,
+        "comment": "",
+        "anonymous": false,
+        "project": null,
     });
 
-    // Hooks
+    // enables redirect
     const navigate = useNavigate();
 
-    // Actions
+    // accesses project ID so the pledge can be connected to it
+    const { id } = useParams();
 
+    // copies the original data, replaces the old data for each id/value pair to what is input in the form (changes state). this will be submitted to API below
     const handleChange = (event) => {
         const { id, value } = event.target;
-
-        setCredentials((prevCredentials) => ({
-            ...prevCredentials,
+        setPledges((prevPledges) => ({
+            ...prevPledges,
             [id]: value,
         }));
     };
 
-    // above we are overiding what was in the previous credentials, and setting the new credentials.
-
-    // Create the submit for login page.
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        if (credentials.username && credentials.password) {
-            const { token } = await postData();
-            window.localStorage.setItem("token", token);
-            navigate("/");
-            // "token" is the key, value is token
-        }
-
-    };
+    // get auth token from local storage
+    const authToken = window.localStorage.getItem("token")
 
 
-    // PostData
+    // POST the data to your deployed, using fetch.
+    // send the token with it to authorise the ability to post
+    // wait for the response - 
+    // if successful, return the JSON payload and display, redirect to / (homepage): I need to change this
+    // if not successful, return the json response display in console
     const postData = async () => {
         const response = await fetch(
-            `${import.meta.env.VITE_API_URL}api-token-auth/`,
+            `${import.meta.env.VITE_API_URL}pledges/`,
             {
                 method: "post",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Token ${authToken}`,
                 },
-                body: JSON.stringify(credentials),
+                body: JSON.stringify(pledges),
             }
         );
         return response.json();
     };
 
+    // if authtoken exists, post the data on submit, wait for the response and nav back to home page
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        if (authToken) {
+            const postPledge = await postData();
+            navigate("/");
+        }
+    };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="username">Username:</label>
-                <input
-                    type="text"
-                    id="username"
-                    onChange={handleChange}
-                    placeholder="Enter username"
-                />
-            </div>
-            <div>
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    onChange={handleChange}
-                    placeholder="Password"
-                />
-            </div>
-            <button type="submit">
-                Login
-            </button>
-        </form>
+        <div>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="amount">Amount:</label>
+                    <input
+                        type="number"
+                        id="amount"
+                        placeholder="Enter amount"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="comment">Comment:</label>
+                    <input
+                        type="text"
+                        id="comment"
+                        placeholder="Enter Comment"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="anonymous">Anonymous:</label>
+                    <input
+                        type="checkbox"
+                        id="anonymous"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="project">Project:</label>
+                    <input
+                        type="text"
+                        id="project"
+                        placeholder="needs to be auto-filled with current project"
+                        onChange={handleChange}
+                    />
+                </div>
+                <button type="submit">Pledge</button>
+            </form>
+        </div>
     );
 }
 
-export default LoginForm;
+export default PledgeForm;

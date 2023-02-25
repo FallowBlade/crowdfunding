@@ -6,22 +6,36 @@ import HomePage from "./pages/HomePage";
 import ProjectPage from "./pages/ProjectPage";
 import LoginPage from "./pages/LoginPage";
 
-// CSS
-import "./App.css";
-
 // Components
 import Nav from "./components/Nav/Nav";
 
-const HeaderLayout = () => (
-  <div>
-    <Nav />
-    <Outlet />
-  </div>
-);
+// CSS
+import "./App.css";
+import { useState } from "react";
+
+const Layout = () => {
+  const [loggedIn, setLoggedIn] =
+    useState(window.localStorage.getItem("token") != null)
+
+  return (
+    <>
+      <Nav LoggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      <Outlet context={[loggedIn, setLoggedIn]} />
+    </>
+  );
+}
+
+
+// const HeaderLayout = () => (
+//   <div>
+//     <Nav />
+//     <Outlet />
+//   </div>
+// );
 
 const router = createBrowserRouter([
   {
-    element: <HeaderLayout />,
+    element: <Layout />,
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/project/:id", element: <ProjectPage /> },

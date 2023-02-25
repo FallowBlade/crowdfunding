@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./ProjectCard.css";
+import PledgeForm from "../PledgeForm/PledgeForm";
 
 
 function ProjectCard(props) {
@@ -12,6 +13,8 @@ function ProjectCard(props) {
                 <Link to={`/project/${project.id}`}>
                     <img src={project.image} />
                     <h3>{project.title}</h3>
+                </Link>
+                <Link to={`/pledges/${PledgeForm}`}>
                 </Link>
             </div>
         </div>
