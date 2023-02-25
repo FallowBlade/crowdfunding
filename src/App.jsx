@@ -10,7 +10,7 @@ import LoginPage from "./pages/LoginPage";
 import "./App.css";
 
 // Components
-import Nav from "./components/Nav/nav";
+import Nav from "./components/Nav/Nav";
 
 const HeaderLayout = () => (
   <div>
