@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useOutletContext } from "react-router-dom";
 
 function PledgeForm() {
+
+
     const [pledges, setPledges] = useState({
         // from JSON Raw Body in Deployed (default values)
         // this is what you return at the bottom - your list might look different to mine. If so, don't worry!
@@ -26,8 +28,7 @@ function PledgeForm() {
         }));
     };
 
-    // get auth token from local storage
-    const authToken = window.localStorage.getItem("token")
+
 
 
     // POST the data to your deployed, using fetch.

@@ -22,12 +22,12 @@ function ProjectPage() {
     return (
         <>
             <h2>{project.title}</h2>
-            <h3>Goal Amount: {project.total}</h3>
-            <h3>Owner: {project.owner}</h3>
+            <h3>Owner: {Object.prototype.toString(project.owner)}</h3>
             <h3>Created at: {project.date_created}</h3>
             <h3>{`Status: ${project.is_open}`}</h3>
             <img src={project.image} />
             <h3>Our Amazing Pledgers:</h3>
+            <h3>Total so far: {project.total}</h3>
 
             <ul>
                 {project.pledges.map((pledgeData, key) => {
