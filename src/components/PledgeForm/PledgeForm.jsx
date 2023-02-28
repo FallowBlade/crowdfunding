@@ -97,7 +97,7 @@ function PledgeForm() {
                         onChange={handleChange}
                     />
                 </div>
-                <button type="submit">Pledge</button>
+                <button type="submit">Donate</button>
             </form>
         </div>
     );
