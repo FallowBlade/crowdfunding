@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate, useParams, useOutletContext } from "react-router-dom";
 
-function PledgeForm() {
+function CreateProjectForm() {
 
 
-    const [pledges, setPledges] = useState({
+    const [project, setProject] = useState({
         // from JSON Raw Body in Deployed (default values)
         // this is what you return at the bottom - your list might look different to mine. If so, don't worry!
         "amount": null,
