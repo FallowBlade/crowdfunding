@@ -11,6 +11,7 @@ function Nav(props) {
     return (
         <nav>
             <Link to="/">Home</Link>
+            <Link to="/CreateProject">Build Project</Link>
             {!LoggedIn && <Link to="/login" className="btn">Login</Link>}
             {/* /* {loggedIn && <button onClick={handleClick}>Sign Out</button>} */}
             {LoggedIn && <button onClick={handleClick}>Sign Out</button>}

@@ -4,25 +4,33 @@ import { useNavigate, useParams, useOutletContext } from "react-router-dom";
 function CreateProjectForm() {
 
     const authToken = window.localStorage.getItem("token");
+
+    // STATE //
     const [project, setProject] = useState({
         // from JSON Raw Body in Deployed (default values)
         // this is what you return at the bottom - your list might look different to mine. If so, don't worry!
-        "amount": null,
-        "comment": "",
-        "anonymous": false,
-        "project": null,
+        "title": "",
+        "description": "",
+        "goal": null,
+        "image": false,
+        "is_open": true,
+        "date_created": "2023-03-05T12:31:24.145010Z",
     });
 
-    // enables redirect
+
+
+    // enables redirect / HOOKS
     const navigate = useNavigate();
 
     // accesses project ID so the pledge can be connected to it
     const { id } = useParams();
 
     // copies the original data, replaces the old data for each id/value pair to what is input in the form (changes state). this will be submitted to API below
+
+    //ACTIONS
     const handleChange = (event) => {
         const { id, value } = event.target;
-        setProject((prevroject) => ({
+        setProject((prevProject) => ({
             ...prevProject,
             [id]: value,
         }));
@@ -54,7 +62,7 @@ function CreateProjectForm() {
         event.preventDefault();
         if (authToken) {
             const postProject = await postData();
-            navigate("/");
+            navigate("/login");
         }
     };
 
@@ -62,41 +70,41 @@ function CreateProjectForm() {
         <div>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="amount">Amount:</label>
+                    <label htmlFor="title">Title: </label>
+                    <input
+                        type="text"
+                        id="title"
+                        placeholder="Enter project name"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="description">Description: </label>
+                    <input
+                        type="text"
+                        id="description"
+                        placeholder="Tell us about your project"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="goal">Goal amount:</label>
                     <input
                         type="number"
-                        id="amount"
-                        placeholder="Enter amount"
+                        id="goal"
                         onChange={handleChange}
                     />
                 </div>
                 <div>
-                    <label htmlFor="comment">Comment:</label>
+                    <label htmlFor="image">Image Link:</label>
                     <input
-                        type="text"
-                        id="comment"
-                        placeholder="Enter Comment"
+                        type="image"
+                        id="image"
+                        placeholder="paste an image link here"
                         onChange={handleChange}
                     />
                 </div>
-                <div>
-                    <label htmlFor="anonymous">Anonymous:</label>
-                    <input
-                        type="checkbox"
-                        id="anonymous"
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="project">Project:</label>
-                    <input
-                        type="text"
-                        id="project"
-                        placeholder="needs to be auto-filled with current project"
-                        onChange={handleChange}
-                    />
-                </div>
-                <button type="submit">Donate</button>
+                <button type="submit">Create project</button>
             </form>
         </div>
     );
