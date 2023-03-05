@@ -12,7 +12,7 @@ function CreateProjectForm() {
         "title": "",
         "description": "",
         "goal": null,
-        "image": false,
+        "image": "",
         "is_open": true,
         "date_created": "2023-03-05T12:31:24.145010Z",
     });
@@ -62,7 +62,7 @@ function CreateProjectForm() {
         event.preventDefault();
         if (authToken) {
             const postProject = await postData();
-            navigate("/login");
+            navigate("/");
         }
     };
 
@@ -98,7 +98,7 @@ function CreateProjectForm() {
                 <div>
                     <label htmlFor="image">Image Link:</label>
                     <input
-                        type="image"
+                        type="file"
                         id="image"
                         placeholder="paste an image link here"
                         onChange={handleChange}
