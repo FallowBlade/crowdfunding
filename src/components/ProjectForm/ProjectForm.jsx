@@ -104,7 +104,7 @@ function CreateProjectForm() {
                         onChange={handleChange}
                     />
                 </div>
-                <button type="submit">Create project</button>
+                <button type="submit">Germinate</button>
             </form>
         </div>
     );

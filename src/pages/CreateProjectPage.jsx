@@ -4,7 +4,7 @@ import CreateProjectForm from "../components/ProjectForm/ProjectForm";
 function CreateProjectPage() {
     return (
         <>
-            <h2>Start a project</h2>
+            <h2>Get Rejuvinating!</h2>
             <section>
                 <CreateProjectForm />
             </section>
