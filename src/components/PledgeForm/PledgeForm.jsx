@@ -3,7 +3,7 @@ import { useNavigate, useParams, useOutletContext } from "react-router-dom";
 
 function PledgeForm() {
 
-
+    const authToken = window.localStorage.getItem("token");
     const [pledges, setPledges] = useState({
         // from JSON Raw Body in Deployed (default values)
         // this is what you return at the bottom - your list might look different to mine. If so, don't worry!
@@ -28,15 +28,13 @@ function PledgeForm() {
         }));
     };
 
-
-
-
     // POST the data to your deployed, using fetch.
     // send the token with it to authorise the ability to post
     // wait for the response - 
     // if successful, return the JSON payload and display, redirect to / (homepage): I need to change this
     // if not successful, return the json response display in console
     const postData = async () => {
+
         const response = await fetch(
             `${import.meta.env.VITE_API_URL}pledges/`,
             {

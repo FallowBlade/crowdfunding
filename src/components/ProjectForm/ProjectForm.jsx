@@ -3,7 +3,7 @@ import { useNavigate, useParams, useOutletContext } from "react-router-dom";
 
 function CreateProjectForm() {
 
-
+    const authToken = window.localStorage.getItem("token");
     const [project, setProject] = useState({
         // from JSON Raw Body in Deployed (default values)
         // this is what you return at the bottom - your list might look different to mine. If so, don't worry!
@@ -22,13 +22,11 @@ function CreateProjectForm() {
     // copies the original data, replaces the old data for each id/value pair to what is input in the form (changes state). this will be submitted to API below
     const handleChange = (event) => {
         const { id, value } = event.target;
-        setPledges((prevPledges) => ({
-            ...prevPledges,
+        setProject((prevroject) => ({
+            ...prevProject,
             [id]: value,
         }));
     };
-
-
 
 
     // POST the data to your deployed, using fetch.
@@ -38,14 +36,14 @@ function CreateProjectForm() {
     // if not successful, return the json response display in console
     const postData = async () => {
         const response = await fetch(
-            `${import.meta.env.VITE_API_URL}pledges/`,
+            `${import.meta.env.VITE_API_URL}project/`,
             {
                 method: "post",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Token ${authToken}`,
                 },
-                body: JSON.stringify(pledges),
+                body: JSON.stringify(project),
             }
         );
         return response.json();
@@ -55,7 +53,7 @@ function CreateProjectForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (authToken) {
-            const postPledge = await postData();
+            const postProject = await postData();
             navigate("/");
         }
     };
@@ -104,4 +102,4 @@ function CreateProjectForm() {
     );
 }
 
-export default PledgeForm;
+export default CreateProjectForm;

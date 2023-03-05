@@ -13,6 +13,9 @@ function ProjectCard(props) {
                 <Link to={`/project/${project.id}`}>
                     <img src={project.image} />
                     <h3>{project.title}</h3>
+                    <p>{project.description}</p>
+                    <p>Project Goal: {project.goal}</p>
+                    <p>Goal so far: {project.total}</p>
                 </Link>
                 <Link to={`/pledges/${PledgeForm}`}>
                 </Link>
