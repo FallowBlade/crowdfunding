@@ -11,7 +11,7 @@ function ProjectCard(props) {
         <div className="project-card">
             <div>
                 <Link to={`/project/${project.id}`}>
-                    <img src={project.image} />
+                    <img class="project-card-image" src={project.image} />
                     <h3>{project.title}</h3>
                     <p>{project.description}</p>
                     <p>Project Goal: {project.goal}</p>

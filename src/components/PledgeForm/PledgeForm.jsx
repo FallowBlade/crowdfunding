@@ -59,7 +59,7 @@ function PledgeForm() {
     };
 
     return (
-        <div>
+        <div className="pledge-box">
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="amount">Amount:</label>
@@ -95,8 +95,8 @@ function PledgeForm() {
                         placeholder="needs to be auto-filled with current project"
                         onChange={handleChange}
                     />
-                </div>
-                <button type="submit">Donate</button>
+                </div >
+                <button className="pledge-button" type="submit">Donate</button>
             </form>
         </div>
     );
