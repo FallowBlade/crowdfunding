@@ -23,16 +23,19 @@ function HomePage() {
     }, []);
 
     return (
-        <div>
-            <h1>Rejuvinature</h1>
-            <p>Reinvigerate your neighbourhood!</p>
+        <>
+            <div className="hero-container">
+                <h1>Rejuvinature</h1>
+                <p className="hero-text">Reinvigerate your neighbourhood!</p>
+            </div>
 
             <div id="project-list">
                 {projectList.map((project, key) => {
                     return <ProjectCard key={key} project={project} />;
                 })}
             </div>
-        </div>
+
+        </>
     );
 }
 

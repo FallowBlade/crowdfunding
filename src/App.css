@@ -23,12 +23,29 @@
   margin-top: 5%;
 }
 
+.logo {
+  /* display: inline-flex; */
+  align-items: left;
+  height: 80px;
+  margin-left: 40px;
+
+}
+
 nav {
   background-color: white;
   padding: 20px;
   text-align: end;
   image-rendering: auto;
 }
+
+/* body {
+  height: 125vh; */
+/* background-image: url('https://codetheweb.blog/assets/img/posts/style-a-navigation-bar-css/background.jpg'); */
+/* background-size: cover;
+  font-family: sans-serif;
+  margin-top: 80px;
+  padding: 30px;
+} */
 
 a {
   font-size: large;
@@ -58,8 +75,8 @@ h3 {
 
 h1 {
   font-size: 8rem;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  color: whitesmoke;
+  font-family: 'DM Sans';
+  color: black;
   text-align: center;
   margin-top: 25px;
   margin-bottom: 25px;
@@ -67,7 +84,6 @@ h1 {
 
 :root {
   background-color: #fff8ed;
-
 }
 
 .project-wrapper {
@@ -91,7 +107,7 @@ h1 {
 
 .pledge-button {
 
-  background: #736ced;
+  background: #f4977b;
   width: 200px;
   height: 50px;
   padding-top: 5px;
@@ -99,7 +115,7 @@ h1 {
   color: whitesmoke;
   font-size: 4rem;
   border-radius: 4px;
-  border: #736ced 4px solid;
+  border: #f4977b 4px solid;
 
   margin-top: 20px;
   margin-bottom: 5px;
@@ -150,7 +166,7 @@ body {
 
 h1,
 h2 {
-  font-family: var(--fancy-font);
+  font-family: sans-serif;
 }
 
 h1 {
@@ -195,7 +211,7 @@ li {
   background-color: var(--aqua);
   padding: 10px 20px;
   border-radius: 5px;
-  border: 1px solid rgb(14, 156, 156);
+  border: 1px solid rgba(59, 156, 14, 0.274);
   color: white;
   box-shadow: 0px 0.5px 2px 0px rgb(174, 174, 174);
   font-size: 16px;

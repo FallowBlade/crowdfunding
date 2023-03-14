@@ -15,9 +15,9 @@ function Nav(props) {
             {!LoggedIn && <Link to="/login" className="btn">Login</Link>}
             {/* /* {loggedIn && <button onClick={handleClick}>Sign Out</button>} */}
             {LoggedIn && <button onClick={handleClick}>Sign Out</button>}
-            <div class="logo">
-                <img src="src/images/assets/Rejuvinature-logo.png" alt="Rejuvinature-logo" />
-            </div>
+
+            <img class="logo" src="src/images/Rejuvinature-logo-static.png" alt="Rejuvinature-logo" />
+
         </nav>
 
 
