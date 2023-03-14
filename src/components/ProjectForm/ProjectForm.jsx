@@ -12,9 +12,11 @@ function CreateProjectForm() {
         "title": "",
         "description": "",
         "goal": null,
-        "image": "",
+        "image": "https://images.pexels.com/photos/101808/pexels-photo-101808.jpeg?auto=compress&cs=tinysrgb&w=600",
         "is_open": true,
         "date_created": "2023-03-05T12:31:24.145010Z",
+        "category": "",
+        "total": null,
     });
 
 
@@ -98,9 +100,18 @@ function CreateProjectForm() {
                 <div>
                     <label htmlFor="image">Image Link:</label>
                     <input
-                        type="file"
+                        type="image"
                         id="image"
                         placeholder="paste an image link here"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="category">category:</label>
+                    <input
+                        type="text"
+                        id="category"
+                        placeholder="please enter a style category here."
                         onChange={handleChange}
                     />
                 </div>
