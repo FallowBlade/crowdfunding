@@ -11,6 +11,14 @@
   row-gap: 10px;
 } */
 
+.project-view {
+  display: center;
+  column-gap: 11%;
+  row-gap: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+}
 
 #project-list {
   display: grid;

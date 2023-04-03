@@ -20,7 +20,7 @@
 
 .project-card-image {
     width: 50%;
-    height: 100px;
+    height: 50px;
     object-fit: cover;
     border-radius: 10%;
     border: solid white 4px;
